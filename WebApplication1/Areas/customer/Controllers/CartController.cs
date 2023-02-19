@@ -25,7 +25,7 @@ namespace WebApplication1.Areas.customer.Controllers
         }
         public IActionResult Index()
         {
-            CartVM = new CartVM()
+            CartVM = new CartVM() 
             {
                 CartList = unitOfWork.shoppingCart.Getall(includeProperties: ("product")),
                 orderheader=new()
