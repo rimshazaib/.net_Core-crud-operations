@@ -1,0 +1,77 @@
+﻿
+@model Product
+
+<form method="post">
+    <input asp-for="Id" hidden />
+    <div class="border p-3  mt-4">
+        <div class="row pb-2">
+            <h2 class="text-primary">Delete Product</h2>
+            <hr />
+        </div>
+        <div class="mb-3">
+            <label asp-for="Title">     </label>
+            <input asp-for="Title" class="form-control" />
+            <span asp-validation-for="Title"  disabled class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="Discription">     </label>
+            <textarea asp-for="Discription" rows="2" class="form-control"></textarea>
+            <span asp-validation-for="Discription" disabled class="text-danger"></span>
+        </div>
+        <div class="mb-3 col-6">
+            <label asp-for="Author">     </label>
+            <input asp-for="Author" class="form-control" />
+            <span asp-validation-for="Author" disabled class="text-danger"></span>
+        </div>
+        <div class="mb-3 col-6">
+            <label asp-for="ISBN">     </label>
+            <input asp-for="ISBN" class="form-control" />
+            <span asp-validation-for="ISBN" disabled class="text-danger"></span>
+        </div>
+        <div class="mb-3 col-6">
+            <label asp-for="Listprice">     </label>
+            <input asp-for="Listprice" class="form-control" />
+            <span asp-validation-for="Listprice" disabled class="text-danger"></span>
+        </div>
+        <div class="mb-3 col-6">
+            <label asp-for="Price">     </label>
+            <input asp-for="Price" class="form-control" />
+            <span asp-validation-for="Price" disabled class="text-danger"></span>
+        </div>
+        <div class="mb-3 col-6">
+            <label asp-for="Price50">     </label>
+            <input asp-for="Price50" class="form-control" />
+            <span asp-validation-for="Price50" disabled class="text-danger"></span>
+        </div>
+        <div class="mb-3 col-6">
+            <label asp-for="Price100">     </label>
+            <input asp-for="Price100" class="form-control" />
+            <span asp-validation-for="Price100" disabled class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="ImgUrl">     </label>
+            <input type="file" id="uploadbox" name="file" disabled class="form-control" />
+        </div>
+        <div class="mb-3 col-6">
+            <label asp-for="CategoryId">     </label>
+            <select asp-for="CategoryId" asp-items="ViewBag.categorylist" disabled class="form-select">
+                <option  selected>--select Category--</option>
+            </select>
+    
+        </div>
+        <div class="mb-3 col-6">
+            <label asp-for="CoverTypeId">     </label>
+            <select asp-for="CoverTypeId" asp-items="@(ViewData["covertypelist"] as IEnumerable<SelectListItem>)" disabled class="form-select">
+                <option disabled selected>--select Covertype--</option>
+            </select>
+            <span asp-validation-for="CoverTypeId" disabled class="text-danger"></span>
+        </div>
+
+        <button type="submit" class="btn btn-danger " style="width:150px">Delete</button>
+        <a asp-controller="Product" asp-action="Index" class="btn btn-secondary" style="width:150px">
+            Back to List
+        </a>
+
+    </div>
+
+</form>

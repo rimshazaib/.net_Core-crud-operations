@@ -8,7 +8,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using WebApplication1.Data;
+using WebApplication1.DataAccess;
+using WebApplication1.Repository;
+using WebApplication1.Repository.IRepository;
 
 namespace WebApplication1
 {
@@ -25,6 +27,7 @@ namespace WebApplication1
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<ApplicationDbContext>();
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
            // options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
            // services.AddDbContext<ApplicationDbContext>(options =>options.("Server:DESKTOP-F1DNKLP;Database=Bulky;Trusted_Connection:True"));
             services.AddControllersWithViews();
@@ -55,7 +58,7 @@ namespace WebApplication1
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{area=customer}/{controller=Home}/{action=Index}/{id?}");
             });
         }
     }
